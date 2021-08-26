@@ -4,21 +4,22 @@ import axios from 'axios';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { destructDate } from '../../code/my-util';
 
-function thread() {
+function Thread() {
 	const router = useRouter();
 	const { username } = router.query;
 	const [data, setData] = useState([]);
 
-	useEffect(async () => {
+	useEffect(() => {
 		const isValid = (username > '');
 		if (isValid == false) {
 			return; // early return
 		}
 
-		const result = await axios.get(`/api/thread/${username}`);
-		const { data } = result;
-		setData(data);
-
+		axios.get(`/api/thread/${username}`).then(result => {
+			const { data } = result;
+			setData(data);
+		});
+		
 	}, [username]);
 	
 	return (
@@ -79,7 +80,7 @@ function thread() {
 	);
 }
 
-export default thread;
+export default Thread;
 
 /**
  * 날짜를 yyyy-mm-dd로 포매팅 한다.
