@@ -83,17 +83,17 @@ function destructDate(date) {
 	date = new Date(date);
 	const yyyy = date.getFullYear();
 	const m = date.getMonth() + 1;
-	const mm = ('00' + m).substr(-2);
+	const mm = (m < 10 ? '0' : '') + m;
 	const d = date.getDate();
 
-	const dd = ('00' + d).substr(-2);
+	const dd = (d < 10 ? '0' : '') + d;
 	const h = date.getHours();
-	const hh = ('00' + h).substr(-2);
+	const hh = (h < 10 ? '0' : '') + h;
 	const i = date.getMinutes();
-	const ii = ('00' + i).substr(-2);
+	const ii = (i < 10 ? '0' : '') + i;
 
 	const s = date.getSeconds();
-	const ss = ('00' + s).substr(-2);
+	const ss = (s < 10 ? '0' : '') + s;
 	const w = date.getDay();
 	const ww = (['일', '월', '화', '수', '목', '금', '토'])[w];
 
